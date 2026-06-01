@@ -1,11 +1,12 @@
 //importing express, environmental variables, bodyparser, router, database connection function and declaring them in a varibale to be using it in our index.js file
-const express = require('express');
-const dotenv = require('dotenv');
-const ConnectDB = require('./db/ConnectDB');
+import express from 'express';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import ConnectDB from './db/ConnectDB.js';
+import router from './routes/DBOperRoutes.js';
+
 const app = express();
-const router = require('./routes/DBOperRoutes');
-const bodyParser = require('body-parser');
-const cors = require("cors")
 dotenv.config();
 //using the port in environmental variable or 5000
 const port = process.env.PORT || 5000;

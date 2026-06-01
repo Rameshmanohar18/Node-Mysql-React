@@ -1,5 +1,6 @@
 //imports the necessary libraries and functions
-const express = require("express")
+import express from "express";
+
 const router = express.Router()
 
 //this get function sends all the results to the client stored in the database as a json object
@@ -103,4 +104,4 @@ router.delete("/", async (req, res) => {
 })
 
 //exporting this router function to be using it in the index.js
-module.exports = router;
+export default router;

@@ -1,5 +1,5 @@
 //importing the mysql2/promise for using async await in conenction function and in querys
-const mysql = require("mysql2/promise");
+import mysql from "mysql2/promise";
 
 //the async await function which connects to the database using the credentials in the .env files
 const ConnectDB = async () => {
@@ -36,4 +36,4 @@ const ConnectDB = async () => {
 };
 
 //exporting the function
-module.exports = ConnectDB;
+export default ConnectDB;
