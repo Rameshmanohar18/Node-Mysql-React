@@ -16,9 +16,9 @@ function Table() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000");
+        const response = await axios.get("/api");
         //setting the empty array as a json object of users got from the server
-        setUsers(response.data);
+        setUsers(Array.isArray(response.data) ? response.data : []);
 
         //using the useRef current which is the same as initialized untill changes
         if (!hasFetchedUsers.current) {
@@ -42,7 +42,7 @@ function Table() {
 
   //after adding or creating a new user we normally would have to manually reload the page but with this function we just add the created user at the last of the fetched json object which we saved as an array
   const addUser = (user) => {
-    setUsers((prevUsers) => [...prevUsers, user]);
+    setUsers((prevUsers) => [...(Array.isArray(prevUsers) ? prevUsers : []), user]);
   };
 
   //using bootstrap pre built components and modal components
@@ -57,7 +57,7 @@ function Table() {
         <EditUserModal />
         <DeleteUserModal />
 
-        {users.length === 0 ? (
+        {!Array.isArray(users) || users.length === 0 ? (
           <h3 id="h3">No Users in Database</h3>
         ) : (
           <table className="table table-bordered table-hover">
